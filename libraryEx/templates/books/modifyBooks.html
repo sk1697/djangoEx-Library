@@ -1,10 +1,6 @@
-<!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/html">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'base.html' %}
+{% block content %}
+
     <p>희망도서 수정하기</p>
     {% if book_info %}
         <form action="{% url 'books:modCon' %}" method="post">
@@ -17,5 +13,5 @@
     {% else %}
         <p>수정할 희망도서가 없습니다.</p>
     {% endif %}
-</body>
-</html>
+
+{% endblock %}
