@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <p>희망도서 입력하기</p>
+    <form action="{% url 'books:regCon' %}" method="post">
+        {% csrf_token %}
+        희망도서명 : <input type="text" name="name"></br>
+        저자 : <input type="text" name="author"></br>
+        <input type="submit" name="register"></br>
+    </form>
+
+
+</body>
+</html>

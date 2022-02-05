@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <p>희망도서 리스트</p>
+
+    {% if book_list %}
+    <ol>
+        {% for s in book_list %}
+        <li>
+            <a href="{% url 'books:bookDet' s.book_name %}">희망도서명 : {{s.book_name}}</a></br>
+            <a href="#none">저자 : {{s.book_author}}</a></br>
+            <a href="{% url 'books:bookMod' s.book_name %}">수정</a></t>
+            <a href="{% url 'books:bookDel' s.book_name %}">삭제</a></br>
+        </li>
+        {% endfor %}
+    </ol>
+    {% else %}
+        <p> 희망도서가 없습니다.</p>
+    {% endif %}
+
+    </br>
+
+    <a href="{% url 'books:reg' %}">신규희망도서등록</a>
+</body>
+</html>
