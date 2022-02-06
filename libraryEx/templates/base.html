@@ -7,37 +7,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" type="text/css" href="{% static 'bootstrap.min.css' %}">
-    <!-- Bootstrap JS -->
-    <link rel="stylesheet" type="text/css" href="{% static 'bootstrap.min.js' %}">
-    <!-- pybo CSS -->
+    <!-- Customized CSS -->
     <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
     <title>flagship 4G 도서대여 시스템</title>
 </head>
 <body>
-<!-- Image and text -->
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand col-lg-10" href="#">
-    <img src="https://img.icons8.com/external-icongeek26-outline-gradient-icongeek26/64/000000/external-book-lifestyle-icongeek26-outline-gradient-icongeek26.png"  width="30" height="30" class="d-inline-block align-top" alt="" loading="lazy">
-      &nbsp;&nbsp;Flagship 4G 도서대여 시스템
-    </a>
-
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-         <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse col-lg-2" id="navbarNav">
-        <ul class="navbar-nav">
-          <li class="nav-item">
-            <a class="nav-link" href="#">로그인</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">회원가입</a>
-          </li>
-        </ul>
-    </div>
-</nav>
+{% include "navbar.html" %}
 <!-- 기본 템플릿 안에 삽입될 내용 Start -->
 {% block content %}
 {% endblock %}
 <!-- 기본 템플릿 안에 삽입될 내용 End -->
+<!-- jQuery JS -->
+<script src="{% static 'jquery-3.6.0.min.js' %}"></script>
+<!-- Bootstrap JS -->
+<script src="{% static 'bootstrap.min.js' %}"></script>
 </body>
 </html>
