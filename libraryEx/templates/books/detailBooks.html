@@ -9,11 +9,12 @@
           <div class="card-body">
             <h5 class="card-title">{{book_info.book_name}}</h5>
             <p class="card-text">저자 : {{book_info.book_author}}</p>
-            <a href="{% url 'books:bookMod' book_info.book_name %}" class="btn btn-primary">수정</a>
-            <a href="{% url 'books:bookDel' book_info.book_name %}" class="btn btn-primary">삭제</a>
             <a href="{% url 'books:bookAll' %}" class="btn btn-primary">보유도서 리스트</a>
-            <a href="{% url 'books:reg' %}" class="btn btn-primary">신규 희망도서등록</a>
-
+            {% if request.user.is_staff %}
+                <a href="{% url 'books:bookMod' book_info.book_name %}" class="btn btn-primary">수정</a>
+                <a href="{% url 'books:bookDel' book_info.book_name %}" class="btn btn-primary">삭제</a>
+                <a href="{% url 'books:reg' %}" class="btn btn-primary">신규 희망도서등록</a>
+            {% endif %}
           </div>
         </div>
     {% else %}

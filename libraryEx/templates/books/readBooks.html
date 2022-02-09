@@ -39,7 +39,20 @@
         <div class="col">
         </div>
     </div>
-    <a href="{% url 'books:reg' %}">신규희망도서등록</a>
+    <div class="row">
+        <div class="col">
+
+        </div>
+        <div class="col">
+
+        </div>
+        <div class="col">
+            {% if request.user.is_staff %}
+                <a href="{% url 'books:reg' %}">신규희망도서등록</a>
+            {% endif %}
+        </div>
+    </div>
+
     <div class="container my-3">
         <table class="table">
             <thead>

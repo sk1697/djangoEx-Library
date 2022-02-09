@@ -5,8 +5,9 @@ from django.shortcuts import render
 from django.urls import reverse
 from books.models import Book
 from django.db.models import Q
+from django.contrib.admin.views.decorators import staff_member_required
 
-@login_required(login_url='common:login')
+@staff_member_required(login_url='common:login')
 def regBooks(request):
     return render(request, 'books/registerBook.html')
 
