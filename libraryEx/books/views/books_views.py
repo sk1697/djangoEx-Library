@@ -15,8 +15,9 @@ def regBooks(request):
 def regConBooks(request):
     name = request.POST['name']
     author = request.POST['author']
+    kind = request.POST['kind']
 
-    qs = Book(book_name=name, book_author=author)
+    qs = Book(book_name=name, book_author=author, book_kind=kind)
     qs.save()
 
     return HttpResponseRedirect(reverse('books:bookAll'))
@@ -37,6 +38,7 @@ def readBooksAll(request):
     # 페이징처리
     paginator = Paginator(book_list, 10)  # 페이지당 10개씩 보여주기
     page_obj = paginator.get_page(page)
+
 
     # qs = Book.objects.all()
     context = {'book_list': page_obj, 'page': page, 'kw': kw}

@@ -5,6 +5,7 @@
     <form action="{% url 'books:regCon' %}" method="post">
         {% csrf_token %}
         희망도서명 : <input type="text" name="name"></br>
+        분야 : <input type="text" name="kind"></br>
         저자 : <input type="text" name="author"></br>
         <input type="submit" name="register"></br>
     </form>

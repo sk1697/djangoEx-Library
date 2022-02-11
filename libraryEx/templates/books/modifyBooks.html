@@ -4,7 +4,7 @@
     <p>희망도서 수정하기</p>
     {% if book_info %}
         <form action="{% url 'books:modCon' %}" method="post">
-            {% csrf_token %} #입력 보안을 위한 처리
+            {% csrf_token %}
             희망도서명 : {{book_info.book_name}}</br>
             <input type="hidden" name="name" value="{{book_info.book_name}}"></br>
             저자 : <input type="text" name="author" value="{{book_info.book_author}}"></br>

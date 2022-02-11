@@ -28,5 +28,8 @@ def index(request):
 
 def detBooks(request, name):
     qs = Book.objects.get(book_name= name)
+    print(qs)
+    print(qs.book_kind)
+    print(qs.id)
     context = { 'book_info' : qs}
     return render(request,'books/detailBooks.html',context)

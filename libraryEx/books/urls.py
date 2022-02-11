@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import base_views, books_views
+from .views import base_views, books_views,borrow_views
 
 app_name = 'books'
 urlpatterns = [
@@ -15,5 +15,9 @@ urlpatterns = [
     path('<str:name>/mod/', books_views.modBooks, name='bookMod'),
     path('modCon/', books_views.modConBooks, name='modCon'),
     path('<str:name>/del/', books_views.delConBooks, name='bookDel'),
+
+    # borrow_views.py
+    path('borrow/create/books/<str:bookname>/det/', borrow_views.borrow_create, name='borrow_create'),
+    path('borrow/delete/books/<str:bookname>/det/', borrow_views.borrow_delete, name='borrow_delete'),
 
 ]
