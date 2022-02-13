@@ -5,32 +5,42 @@ from django.shortcuts import get_object_or_404
 from django.urls import reverse
 from django.utils import timezone
 from django.shortcuts import render
+from common.models import CustomUser
+from django.contrib.auth import get_user_model
+import datetime
 
 @login_required(login_url='common:login')
-def borrow_create(request, bookname):
+def bookborrow(request, bookname):
 
     # 도서대여 생성"
     qs = Book.objects.get(book_name = bookname)
     qs.is_borrowed = True
-    qs.borrower = request.user
+
+    CustomUser = get_user_model()
+    qs.borrowerid = CustomUser.objects.get(id=request.user.pk)
+    qs.borrower =CustomUser.objects.get(id=request.user.pk).korname
     qs.borrow_date = timezone.now()
+    qs.return_date = qs.borrow_date + datetime.timedelta(days=14)
+
+
     print(qs)
     print(qs.id)
     print(qs.book_kind)
     print(qs.is_borrowed)
+    print(qs.borrowerid)
     print(qs.borrower)
     print(qs.borrow_date)
+    print(qs.return_date)
     qs.save()
 
     return HttpResponseRedirect(reverse('books:bookAll'))
 
 @login_required(login_url='common:login')
-def borrow_delete(request, bookname):
+def bookreturn(request, bookname):
 
     # 도서대여 생성"
     qs = Book.objects.get(book_name = bookname)
     qs.is_borrowed = False
-
     qs.borrower = None
     qs.borrow_date = timezone.now()
     print(qs)

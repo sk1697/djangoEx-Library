@@ -17,7 +17,7 @@ urlpatterns = [
     path('<str:name>/del/', books_views.delConBooks, name='bookDel'),
 
     # borrow_views.py
-    path('borrow/create/books/<str:bookname>/det/', borrow_views.borrow_create, name='borrow_create'),
-    path('borrow/delete/books/<str:bookname>/det/', borrow_views.borrow_delete, name='borrow_delete'),
+    path('bookborrow/books/<str:bookname>/det/', borrow_views.bookborrow, name='borrow_create'),
+    path('bookreturn/books/<str:bookname>/det/', borrow_views.bookreturn, name='borrow_delete'),
 
 ]
