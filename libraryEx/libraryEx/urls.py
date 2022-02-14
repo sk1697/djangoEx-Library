@@ -22,6 +22,5 @@ urlpatterns = [
     path('books/', include('books.urls')),
     path('common/', include('common.urls')),
     path('', base_views.index, name='index'),  # '/' 에 해당되는 path
-    path('sendEmail/', include('sendEmail.urls')),
 ]
 
