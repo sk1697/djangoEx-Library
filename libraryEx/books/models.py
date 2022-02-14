@@ -24,8 +24,8 @@ class Book(models.Model):
         time = datetime.now(tz=timezone.utc) - self.borrow_date
 
         return '+' + str(time.days + 1)+' 일'
-
-    class Meta:
-        db_table = 'Book'
+    #
+    # class Meta:
+    #     db_table = 'Book'
 
 
