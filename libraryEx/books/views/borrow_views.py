@@ -1,13 +1,12 @@
+import datetime
+
 from books.models import Book
+from django.contrib.auth import get_user_model
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect
-from django.shortcuts import get_object_or_404
 from django.urls import reverse
 from django.utils import timezone
-from django.shortcuts import render
-from common.models import CustomUser
-from django.contrib.auth import get_user_model
-import datetime
+
 
 @login_required(login_url='common:login')
 def bookborrow(request, bookname):
@@ -42,10 +41,9 @@ def bookreturn(request, bookname):
     qs = Book.objects.get(book_name = bookname)
     qs.is_borrowed = False
     qs.borrower = None
-    qs.borrow_date = timezone.now()
+    qs.borrow_date = None
     print(qs)
     print(qs.id)
-    print(qs.book_kind)
     print(qs.is_borrowed)
     print(qs.borrower)
     print(qs.borrow_date)

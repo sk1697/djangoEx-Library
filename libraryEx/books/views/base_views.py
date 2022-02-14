@@ -1,8 +1,7 @@
-from django.shortcuts import render
+from books.models import Book
 from django.core.paginator import Paginator
 from django.db.models import Q
 from django.shortcuts import render
-from books.models import Book
 
 
 def index(request):
@@ -15,8 +14,10 @@ def index(request):
     if kw:
         book_list = book_list.filter(
             Q(book_name__icontains=kw) |  # 책제목검색
-            Q(book_author__icontains=kw)  # 저자검색
-        ).distinct()
+            Q(book_author__icontains=kw) |  # 저자검색
+            Q(book_kind__icontains=kw) |  # 책 분야검색
+            Q(borrower__icontains=kw)
+        ) #.distinct()
 
     # 페이징처리
     paginator = Paginator(book_list, 10)  # 페이지당 10개씩 보여주기
