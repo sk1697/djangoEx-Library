@@ -25,8 +25,9 @@ with open(CSV_PATH, newline='') as csvfile:  # 4. newline =''
 
     for row in data_reader:
         print(row)
-        Book.objects.create(  # 5. class명.objects.create
+        qs = Book.objects.create(  # 5. class명.objects.create
             book_name=row['book_name'],
             book_author = row['book_author'],
             book_kind = row['book_kind'],
         )
+        qs.save()
