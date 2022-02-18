@@ -34,16 +34,16 @@ def bookborrow(request, bookname):
     qs.save()
 
     # 대여정보 메일 발송
-    email_subject = str(qs.borrower) + '님  "' + str(qs) + '"  도서대여 정보입니다.'
-    email_content = '안녕하세요. flagship4G 도서관리자입니다. \n\n"'+ str(qs) + '" 도서를 대여하셨습니다. \n대출기간은 14일이니 참고 부탁드립니다. \n'
-    email_sender = 'sk1697@naver.com'
-    email_reciever = str(CustomUser.objects.get(id=request.user.pk).email)
-    send_mail(email_subject,
-              email_content,
-              email_sender,
-              [email_reciever],
-              fail_silently=False
-              )
+    # email_subject = str(qs.borrower) + '님  "' + str(qs) + '"  도서대여 정보입니다.'
+    # email_content = '안녕하세요. flagship4G 도서관리자입니다. \n\n"'+ str(qs) + '" 도서를 대여하셨습니다. \n대출기간은 14일이니 참고 부탁드립니다. \n'
+    # email_sender = 'sk1697@naver.com'
+    # email_reciever = str(CustomUser.objects.get(id=request.user.pk).email)
+    # send_mail(email_subject,
+    #           email_content,
+    #           email_sender,
+    #           [email_reciever],
+    #           fail_silently=False
+    #           )
 
 
     return HttpResponseRedirect(reverse('books:bookAll'))
@@ -64,16 +64,16 @@ def bookreturn(request, bookname):
     qs.save()
 
     # 도서반납확인 메일 발송
-    CustomUser = get_user_model()
-    email_subject = str(CustomUser.objects.get(id=request.user.pk).korname) + '님  "' + str(qs) + '"  도서반납 확인 메일입니다.'
-    email_content = '안녕하세요. flagship4G 도서관리자입니다. \n\n"'+ str(qs) + '" 도서를 반납하셨습니다. \n 그룹서가를 이용해주셔서 감사합니다 ^ㅡ^ \n'
-    email_sender = 'sk1697@naver.com'
-    email_reciever = str(CustomUser.objects.get(id=request.user.pk).email)
-    send_mail(email_subject,
-              email_content,
-              email_sender,
-              [email_reciever],
-              fail_silently=False
-              )
+    # CustomUser = get_user_model()
+    # email_subject = str(CustomUser.objects.get(id=request.user.pk).korname) + '님  "' + str(qs) + '"  도서반납 확인 메일입니다.'
+    # email_content = '안녕하세요. flagship4G 도서관리자입니다. \n\n"'+ str(qs) + '" 도서를 반납하셨습니다. \n 그룹서가를 이용해주셔서 감사합니다 ^ㅡ^ \n'
+    # email_sender = 'sk1697@naver.com'
+    # email_reciever = str(CustomUser.objects.get(id=request.user.pk).email)
+    # send_mail(email_subject,
+    #           email_content,
+    #           email_sender,
+    #           [email_reciever],
+    #           fail_silently=False
+    #           )
 
     return HttpResponseRedirect(reverse('books:bookAll'))

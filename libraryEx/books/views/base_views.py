@@ -2,7 +2,8 @@ from books.models import Book
 from django.core.paginator import Paginator
 from django.db.models import Q
 from django.shortcuts import render
-
+import urllib.request
+import json
 
 def index(request):
     # 입력 파라미터
@@ -32,5 +33,37 @@ def detBooks(request, name):
     print(qs)
     print(qs.book_kind)
     print(qs.id)
-    context = { 'book_info' : qs}
+
+    # 네이버  API로 책커버 불러오기
+    client_id = "7KL1lBn0_Bjs1bVyJxwL"
+    client_secret = "KuQJ7WYhtZ"
+    encText = urllib.parse.quote(name)
+    option = "&display=1"
+    url = "https://openapi.naver.com/v1/search/book?query=" + encText + option  # json 결과
+    # url = "https://openapi.naver.com/v1/search/blog.xml?query=" + encText # xml 결과
+    request1 = urllib.request.Request(url)
+    request1.add_header("X-Naver-Client-Id", client_id)
+    request1.add_header("X-Naver-Client-Secret", client_secret)
+    response = urllib.request.urlopen(request1)
+    rescode = response.getcode()
+
+    if (rescode == 200):
+        response_body = response.read()
+        results = json.loads(response_body.decode('utf-8'))
+        items = results.get('items')
+        print(items)
+        print(type(items))
+        for item in items:
+            imglink = item['image']
+            print(imglink)
+            print(type(imglink))
+    else:
+        print("Error Code:" + rescode)
+
+
+
+    context = { 'book_info' : qs,
+                 'imglink' : imglink
+                }
+
     return render(request,'books/detailBooks.html',context)

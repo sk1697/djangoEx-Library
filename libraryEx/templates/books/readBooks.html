@@ -64,6 +64,7 @@
                     {{ book_list.paginator.count|sub:book_list.start_index|sub:forloop.counter0|add:1 }}
                 </td>
 <!--                <td>{{ forloop.counter }}</td>-->
+
                 <td><a href="{% url 'books:bookDet' s.book_name %}">{{ s.book_name }}</a></td>
                 <td>{{ s.book_kind }}</td>
                 {% if s.is_borrowed %}

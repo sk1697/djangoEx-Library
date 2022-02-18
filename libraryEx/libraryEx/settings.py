@@ -137,9 +137,21 @@ LOGOUT_REDIRECT_URL = '/'
 
 AUTH_USER_MODEL = 'common.CustomUser'
 
-EMAIL_HOST = 'smtp.naver.com'
+#구글 SMTP SETTINGS
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.googlemail.com'
 EMAIL_PORT = '587'
-EMAIL_HOST_USER = 'sk1697'
-EMAIL_HOST_PASSWORD = 'wjdgus20711681'
+EMAIL_HOST_USER = 'jrabbit.park@gmail.com'
+EMAIL_HOST_PASSWORD = 'wjdgus854!'
 EMAIL_USE_TLS = True
 EMAIL_USE_SSL = False
+
+
+#네이버 SMTP SETTINGS
+# #EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+# EMAIL_HOST = 'smtp.naver.com'
+# EMAIL_PORT = '587'
+# EMAIL_HOST_USER = '아이디'
+# EMAIL_HOST_PASSWORD = '비밀번호'
+# EMAIL_USE_TLS = True
+# EMAIL_USE_SSL = False

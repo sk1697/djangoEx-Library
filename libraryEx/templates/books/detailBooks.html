@@ -8,6 +8,11 @@
           </div>
           <div class="card-body">
             <h3 class="card-title">{{book_info.book_name}}</h3>
+            {% if imglink %}
+                <div><img src="{{ imglink }}"></div>
+            {% else %}
+                <div>이미지가 없음</div>
+            {% endif %}
             <p class="card-text">분야 : {{book_info.book_kind}}</p>
             <p class="card-text">저자 : {{book_info.book_author}}</p>
             {% if book_info.is_borrowed %}
